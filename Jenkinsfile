@@ -62,7 +62,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image acecloudacademy/hotstar:latest > trivyimage.txt" 
+                sh "trivy image shweta2593/hotstar:latest > trivyimage.txt" 
             }
         }
         stage('Deploy to container'){
