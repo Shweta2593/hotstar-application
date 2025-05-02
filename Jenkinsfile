@@ -21,7 +21,7 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonarqube') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Hotstar \
+                    sh ''' $SCANNER_HOME/bin/sonar-token1 -Dsonar.projectName=Hotstar \
                     -Dsonar.projectKey=Hotstar '''
                 }
             }
@@ -40,7 +40,7 @@ pipeline{
         }
         stage('OWASP FS SCAN') {
             steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey 6996da64-c834-4f2f-b09d-68e47196ae71', odcInstallation: 'DC'
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey  5a6840f3-7737-41b9-a099-31c641cd71d0', odcInstallation: 'DC'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
            }
         }
